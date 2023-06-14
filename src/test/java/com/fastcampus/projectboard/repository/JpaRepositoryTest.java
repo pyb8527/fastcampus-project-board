@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.List;
 
 
-@DisplayName("JPA 연결 테스트")
+@DisplayName("JPA ConnectionTest")
 @Import(JpaConfig.class)
 @DataJpaTest
 class JpaRepositoryTest {
@@ -28,7 +28,7 @@ class JpaRepositoryTest {
         this.articleRepository = articleRepository;
         this.articleCommentRepository = articleCommentRepository;
     }
-    @DisplayName("select 테스트")
+    @DisplayName("select Test")
     @Test
     void givenTestData_whenSelecting_thenWorksFine(){
         //Given
@@ -38,10 +38,10 @@ class JpaRepositoryTest {
         //Then
         assertThat(articles)
                 .isNotNull()
-                .hasSize(0);
+                .hasSize(123);
     }
 
-    @DisplayName("insert 테스트")
+    @DisplayName("insert Test")
     @Test
     void givenTestData_whenInserting_thenWorksFine(){
 
@@ -55,7 +55,7 @@ class JpaRepositoryTest {
         assertThat(articleRepository.count()).isEqualTo(previousCount + 1);
     }
 
-    @DisplayName("update 테스트")
+    @DisplayName("update Test")
     @Test
     void givenTestData_whenUpdating_thenWorksFine(){
 
@@ -69,5 +69,23 @@ class JpaRepositoryTest {
 
         //Then
         assertThat(savedArticle).hasFieldOrPropertyWithValue("hashtag", updatedHashtag);
+    }
+
+    @DisplayName("Delete Test")
+    @Test
+    void givenTestData_whenDeleting_thenWorksFine(){
+
+        // Given
+        Article article = articleRepository.findById(1L).orElseThrow();
+        long previousArticleCount = articleRepository.count();
+        long previousArticleCommentCount = articleCommentRepository.count();
+        int deletedCommentsSize = article.getArticleComments().size();
+
+        //When
+        articleRepository.delete(article);
+
+        //Then
+        assertThat(articleRepository.count()).isEqualTo(previousArticleCount - 1);
+        assertThat(articleCommentRepository.count()).isEqualTo(previousArticleCommentCount - deletedCommentsSize);
     }
 }
