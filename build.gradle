@@ -39,6 +39,7 @@ configurations {
 		implementation "com.querydsl:querydsl-jpa"
 		implementation "com.querydsl:querydsl-core"
 		implementation "com.querydsl:querydsl-collections"
+		annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 		annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jpa"
 		annotationProcessor "jakarta.annotation:jakarta.annotation-api"
 		annotationProcessor "jakarta.persistence:jakarta.persistence-api"
