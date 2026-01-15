@@ -12,15 +12,23 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 
-
-@DisplayName("JPA ConnectionTest")
-@Import(JpaConfig.class)
+/**
+ * JPA Connection Test
+ */
 @DataJpaTest
+@Import(JpaConfig.class)
+@DisplayName("JPA ConnectionTest")
 class JpaRepositoryTest {
 
     private final ArticleRepository articleRepository;
     private final ArticleCommentRepository articleCommentRepository;
 
+    /**
+     * 생성자 주입
+     *
+     * @param articleRepository 게시글 Repository
+     * @param articleCommentRepository 댓글 Repository
+     */
     public JpaRepositoryTest(
             @Autowired ArticleRepository articleRepository,
             @Autowired ArticleCommentRepository articleCommentRepository){
@@ -28,8 +36,10 @@ class JpaRepositoryTest {
         this.articleRepository = articleRepository;
         this.articleCommentRepository = articleCommentRepository;
     }
-    @DisplayName("select Test")
+
+
     @Test
+    @DisplayName("select Test")
     void givenTestData_whenSelecting_thenWorksFine(){
         //Given
         //When
@@ -41,8 +51,8 @@ class JpaRepositoryTest {
                 .hasSize(123);
     }
 
-    @DisplayName("insert Test")
     @Test
+    @DisplayName("insert Test")
     void givenTestData_whenInserting_thenWorksFine(){
 
         // Given
@@ -55,8 +65,8 @@ class JpaRepositoryTest {
         assertThat(articleRepository.count()).isEqualTo(previousCount + 1);
     }
 
-    @DisplayName("update Test")
     @Test
+    @DisplayName("update Test")
     void givenTestData_whenUpdating_thenWorksFine(){
 
         // Given
@@ -71,8 +81,8 @@ class JpaRepositoryTest {
         assertThat(savedArticle).hasFieldOrPropertyWithValue("hashtag", updatedHashtag);
     }
 
-    @DisplayName("Delete Test")
     @Test
+    @DisplayName("Delete Test")
     void givenTestData_whenDeleting_thenWorksFine(){
 
         // Given

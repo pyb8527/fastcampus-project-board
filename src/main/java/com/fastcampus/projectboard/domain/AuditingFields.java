@@ -14,25 +14,40 @@ import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
+/**
+ * 각 도메인 객체의 기본 정보
+ */
 @Getter
 @ToString
-@EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 public class AuditingFields {
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    /**
+     * 생성 일시
+     */
     @CreatedDate
     @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt; // 생성일시
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime createdAt;
 
+    /**
+     * 생성자
+     */
     @CreatedBy
     @Column(nullable = false, length = 100)
-    private String createdBy; // 생성자
+    private String createdBy;
 
+    /**
+     * 수정 일시
+     */
     @LastModifiedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime modifiedAt; //수정일시
 
+    /**
+     * 수정자
+     */
     @LastModifiedBy
     @Column(nullable = false, length = 100)
     private String modifiedBy; // 수정자
