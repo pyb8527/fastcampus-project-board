@@ -1,4 +1,4 @@
-package com.fastcampus.projectboard.domain;
+package com.fastcampus.projectboard.domain.common;
 
 import lombok.Getter;
 import lombok.ToString;
@@ -29,26 +29,26 @@ public class AuditingFields {
     @CreatedDate
     @Column(nullable = false, updatable = false)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDateTime createdAt;
+    protected LocalDateTime createdAt;
 
     /**
      * 생성자
      */
     @CreatedBy
     @Column(nullable = false, length = 100)
-    private String createdBy;
+    protected String createdBy;
 
     /**
      * 수정 일시
      */
     @LastModifiedDate
     @Column(nullable = false, updatable = false)
-    private LocalDateTime modifiedAt; //수정일시
+    protected LocalDateTime modifiedAt;
 
     /**
      * 수정자
      */
     @LastModifiedBy
     @Column(nullable = false, length = 100)
-    private String modifiedBy; // 수정자
+    protected String modifiedBy;
 }

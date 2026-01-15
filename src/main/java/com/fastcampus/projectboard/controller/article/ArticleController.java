@@ -1,22 +1,28 @@
-package com.fastcampus.projectboard.controller;
+package com.fastcampus.projectboard.controller.article;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 /**
  * 게시글 관련 API
  */
-@RestController
+@Controller
 @RequestMapping("/articles")
 public class ArticleController {
+
+    /**
+     * 게시글 조회
+     *
+     * @param map
+     * @return
+     */
     @GetMapping
-    public String articles(ModelMap map){
+    public String getArticles(ModelMap map){
         map.addAttribute("articles", List.of());
         return "articles/index";
     }

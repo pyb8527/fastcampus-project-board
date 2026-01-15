@@ -1,8 +1,7 @@
-package com.fastcampus.projectboard.repository;
+package com.fastcampus.projectboard.repository.article;
 
-import com.fastcampus.projectboard.domain.ArticleComment;
-import com.fastcampus.projectboard.domain.QArticle;
-import com.fastcampus.projectboard.domain.QArticleComment;
+import com.fastcampus.projectboard.domain.article.ArticleComment;
+import com.fastcampus.projectboard.domain.article.QArticleComment;
 import com.querydsl.core.types.dsl.DateTimeExpression;
 import com.querydsl.core.types.dsl.StringExpression;
 import org.springframework.data.jpa.repository.JpaRepository;

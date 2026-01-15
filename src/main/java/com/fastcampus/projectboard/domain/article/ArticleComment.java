@@ -1,5 +1,6 @@
-package com.fastcampus.projectboard.domain;
+package com.fastcampus.projectboard.domain.article;
 
+import com.fastcampus.projectboard.domain.common.AuditingFields;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

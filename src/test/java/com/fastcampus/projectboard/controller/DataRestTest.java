@@ -14,11 +14,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Disabled("Spring Data TEST 통합테스트는 불필요 하므로 Disabled 처리")
-@DisplayName("Data Rest - Api Test")
 @Transactional
-@AutoConfigureMockMvc
 @SpringBootTest
+@AutoConfigureMockMvc
+@DisplayName("Data Rest - Api Test")
+@Disabled("Spring Data TEST 통합테스트는 불필요 하므로 Disabled 처리")
 public class DataRestTest {
 
     private final MockMvc mvc;
@@ -28,8 +28,8 @@ public class DataRestTest {
     }
 
 
-    @DisplayName("[api] 게시글 List 조회")
     @Test
+    @DisplayName("[api] 게시글 List 조회")
     void givenNothing_whenRequestingArticles_thenReturnsArticlesJsonResponse() throws Exception{
         // Given
 
@@ -39,8 +39,8 @@ public class DataRestTest {
                 .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
     }
 
-    @DisplayName("[api] 게시글 Single 조회")
     @Test
+    @DisplayName("[api] 게시글 Single 조회")
     void givenNothing_whenRequestingArticle_thenReturnsArticlesJsonResponse() throws Exception{
         // Given
 
@@ -50,8 +50,8 @@ public class DataRestTest {
                 .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
     }
 
-    @DisplayName("[api] 게시글 -> comments List 조회")
     @Test
+    @DisplayName("[api] 게시글 -> comments List 조회")
     void givenNothing_whenRequestingArticleCommentsFromArticle_thenReturnsArticleCommentsJsonResponse() throws Exception{
         // Given
 
@@ -61,8 +61,8 @@ public class DataRestTest {
                 .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
     }
 
-    @DisplayName("[api] comments 조회")
     @Test
+    @DisplayName("[api] comments 조회")
     void givenNothing_whenRequestingArticleComments_thenReturnsArticleCommentsJsonResponse() throws Exception{
         // Given
 
@@ -72,8 +72,8 @@ public class DataRestTest {
                 .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
     }
 
-    @DisplayName("[api] comment Single 조회")
     @Test
+    @DisplayName("[api] comment Single 조회")
     void givenNothing_whenRequestingArticleComment_thenReturnsArticleCommentJsonResponse() throws Exception{
         // Given
 

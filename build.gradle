@@ -28,6 +28,8 @@ configurations {
 		implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 		implementation 'org.springframework.data:spring-data-rest-hal-explorer'
 		implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+		implementation 'org.springframework.boot:spring-boot-starter-security'
+		implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 
         // DATABASE
 		runtimeOnly 'com.h2database:h2'
@@ -48,6 +50,7 @@ configurations {
 
         // TEST
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testCompileOnly 'org.projectlombok:lombok'
 	}
 
 	tasks.named('test') {
